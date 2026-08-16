@@ -1,0 +1,6 @@
+# These repos are authored on Windows and run on Arch Linux.
+# Force LF everywhere — CRLF breaks shell scripts and confuses Lua tooling.
+* text=auto eol=lf
+
+*.sh  text eol=lf
+*.lua text eol=lf

@@ -1,0 +1,40 @@
+-- Keyboard, mouse and trackpad. Uncommented values replace Omarchy's defaults.
+-- Docs: https://wiki.hypr.land/Configuring/Basics/Variables/#input
+
+-- hl.config({
+--   input = {
+--     -- Make Caps Lock a second Ctrl.
+--     kb_options = "ctrl:nocaps",
+--
+--     -- Multiple layouts, switched with Alt + Space.
+--     kb_layout = "us,dk",
+--     -- kb_options = "ctrl:nocaps,grp:alt_space_toggle",
+--
+--     -- Key repeat.
+--     repeat_rate = 50,
+--     repeat_delay = 220,
+--
+--     -- Mouse sensitivity (default 0) and acceleration.
+--     sensitivity = 0.35,
+--     accel_profile = "flat",
+--
+--     touchpad = {
+--       disable_while_typing = true,
+--       natural_scroll = true,
+--       scroll_factor = 0.4,
+--
+--       -- Hyprland names some keys with hyphens; those need bracket syntax
+--       -- in Lua, since `tap-to-click` would otherwise parse as subtraction.
+--       ["tap-to-click"] = false,
+--
+--       -- Two-finger click for right-click instead of the lower-right corner.
+--       clickfinger_behavior = true,
+--     },
+--   },
+-- })
+
+-- Per-app scroll speed.
+-- o.window("com.mitchellh.ghostty", { scroll_touchpad = 0.2 })
+
+-- Three-finger swipe to change workspaces.
+-- hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
