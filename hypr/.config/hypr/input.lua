@@ -1,40 +1,57 @@
--- Keyboard, mouse and trackpad. Uncommented values replace Omarchy's defaults.
--- Docs: https://wiki.hypr.land/Configuring/Basics/Variables/#input
+-- Keep only your personal input overrides here. Uncommented settings below
+-- replace Omarchy's defaults.
 
--- hl.config({
---   input = {
---     -- Make Caps Lock a second Ctrl.
---     kb_options = "ctrl:nocaps",
---
---     -- Multiple layouts, switched with Alt + Space.
---     kb_layout = "us,dk",
---     -- kb_options = "ctrl:nocaps,grp:alt_space_toggle",
---
---     -- Key repeat.
---     repeat_rate = 50,
---     repeat_delay = 220,
---
---     -- Mouse sensitivity (default 0) and acceleration.
---     sensitivity = 0.35,
---     accel_profile = "flat",
---
---     touchpad = {
---       disable_while_typing = true,
---       natural_scroll = true,
---       scroll_factor = 0.4,
---
---       -- Hyprland names some keys with hyphens; those need bracket syntax
---       -- in Lua, since `tap-to-click` would otherwise parse as subtraction.
---       ["tap-to-click"] = false,
---
---       -- Two-finger click for right-click instead of the lower-right corner.
---       clickfinger_behavior = true,
---     },
---   },
--- })
+-- Keyboard layout and options.
+-- See https://wiki.hypr.land/Configuring/Basics/Variables/#input
+hl.config({
+  input = {
+    -- Use multiple keyboard layouts and switch between them with Left Alt + Right Alt.
+    kb_layout = "us,ara",
+    kb_options = "compose:caps,shift:both_capslock_cancel,grp:alts_toggle",
 
--- Per-app scroll speed.
+    -- Use a specific keyboard variant if needed (e.g. intl for international keyboards).
+    -- kb_variant = "intl",
+
+    -- -- Change speed of keyboard repeat.
+    -- repeat_rate = 40,
+    -- repeat_delay = 250,
+
+    -- -- Start with numlock on by default.
+    -- numlock_by_default = true,
+
+    -- -- Increase sensitivity for mouse/trackpad (default: 0).
+    -- sensitivity = 0.2,
+
+    -- -- Turn off mouse acceleration (default: adaptive).
+    -- accel_profile = "flat",
+
+    touchpad = {
+      -- Use natural (inverse) scrolling.
+      natural_scroll = true,
+
+      -- Use two-finger clicks for right-click instead of lower-right corner.
+      clickfinger_behavior = true,
+
+      -- -- Control the speed of your scrolling.
+      -- scroll_factor = 0.4,
+
+      -- -- Enable the touchpad while typing.
+      -- disable_while_typing = false,
+
+      -- -- Left-click-and-drag with three fingers.
+      -- drag_3fg = 1,
+    },
+  },
+})
+
+-- App-specific touchpad scroll speeds.
+-- o.window("(Alacritty|kitty|foot)", { scroll_touchpad = 1.5 })
 -- o.window("com.mitchellh.ghostty", { scroll_touchpad = 0.2 })
 
--- Three-finger swipe to change workspaces.
+-- Enable touchpad gestures for changing workspaces.
+-- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Gestures/
 -- hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
+
+-- Enable touchpad gestures for moving focus (helpful on scrolling layout).
+-- hl.gesture({ fingers = 3, direction = "left", action = function() hl.dispatch(hl.dsp.focus({ direction = "l" })) end })
+-- hl.gesture({ fingers = 3, direction = "right", action = function() hl.dispatch(hl.dsp.focus({ direction = "r" })) end })
