@@ -1,0 +1,54 @@
+# Replaces Omarchy's own ~/.config/alacritty/alacritty.toml.
+#
+# Only `opacity`, `padding`, and `size` below are personal preference — the rest
+# is carried over verbatim from Omarchy's version, which this file displaces.
+# After an `omarchy update`, diff the two so new upstream settings aren't lost:
+#   diff ~/.dotfiles-backup-*/.config/alacritty/alacritty.toml \
+#        ~/dotfiles/alacritty/.config/alacritty/alacritty.toml
+
+# Colors follow the active Omarchy theme, so `omarchy theme` keeps working.
+[general]
+import = ["~/.local/state/omarchy/current/theme/alacritty.toml"]
+
+# Omarchy sets this too — some remote hosts lack the `alacritty` terminfo.
+[env]
+TERM = "xterm-256color"
+
+# Clipboard over OSC52, so yanking inside SSH/tmux reaches the host clipboard.
+[terminal]
+osc52 = "CopyPaste"
+
+[window]
+
+opacity = 0.9
+
+padding.x = 10
+padding.y = 10
+
+# Hyprland draws its own borders; a title bar here would be redundant.
+decorations = "None"
+
+[font]
+
+# Ships with Omarchy, and is what Omarchy's own config uses. CaskaydiaCove is
+# the ligature variant, but Alacritty doesn't render ligatures — identical
+# result, extra package.
+normal.family = "CaskaydiaMono Nerd Font"
+bold.family = "CaskaydiaMono Nerd Font"
+italic.family = "CaskaydiaMono Nerd Font"
+bold_italic.family = "CaskaydiaMono Nerd Font"
+
+size = 15.0
+
+# Omarchy's, unchanged. The CSI-u escapes are load-bearing: without them
+# Shift+Return is indistinguishable from Return in TUIs, and tmux cannot match
+# M-S-Enter. Do not drop these when editing this file.
+[keyboard]
+bindings = [
+  { key = "Insert", mods = "Shift", action = "Paste" },
+  { key = "Insert", mods = "Control", action = "Copy" },
+  # Send Shift+Return as CSI-u so TUIs can distinguish it from Return without treating it as Alt+Return.
+  { key = "Return", mods = "Shift", chars = "\u001B[13;2u" },
+  # Legacy encoding sends Alt+Shift+Return the same as Alt+Return; send CSI-u so tmux can match M-S-Enter.
+  { key = "Return", mods = "Alt|Shift", chars = "\u001B[13;4u" }
+]

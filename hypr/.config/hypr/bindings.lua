@@ -54,13 +54,21 @@ hl.bind("ALT + UP", hl.dsp.focus({ direction = "u" }), {description = "Focus Up 
 hl.bind("ALT + DOWN", hl.dsp.focus({ direction = "d" }), {description = "Focus Down Window"})
 
 
+-- Super + number moves the window (and follows it). Omarchy binds SUPER+N to
+-- switch and SUPER+SHIFT+N to move, so both get unbound — otherwise
+-- SUPER+SHIFT+N is left as a second, redundant move binding.
+-- Workspace switching stays on SUPER+LEFT/RIGHT above.
+-- SUPER+SHIFT+ALT+N ("move silently", no follow) is Omarchy's, left alone.
+--
+-- Bound by keycode, not keysym: with kb_layout = "us,ara" the Arabic layout
+-- changes what the number row emits, so a keysym binding would break on
+-- layout toggle. code:10..19 is the physical row and is layout-independent.
 for workspace = 1, 10 do
   local key = "code:" .. tostring(workspace + 9)
 
-  -- Remove Omarchy's default: Super + number -> switch workspace
   hl.unbind("SUPER + " .. key)
+  hl.unbind("SUPER + SHIFT + " .. key)
 
-  -- Replace it with: Super + number -> move window
   o.bind(
     "SUPER + " .. key,
     "Move window to workspace " .. workspace,

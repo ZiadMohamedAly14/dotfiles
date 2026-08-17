@@ -35,6 +35,8 @@ No sync step; commit from `~/dotfiles`.
 |---|---|---|
 | `bash` | `~/.bashrc` | Omarchy's bootstrap block **must stay first and unmodified** |
 | `hypr` | `~/.config/hypr/*.lua` | Five override files only — not the loader |
+| `alacritty` | `~/.config/alacritty/alacritty.toml` | Replaces Omarchy's file; keeps its theme import so `omarchy theme` still works |
+| `starship` | `~/.config/starship.toml` | Literal hex palette — deliberately not theme-aware |
 
 **A package deploys only if its name is in the `PACKAGES` array in omarchy-supplement's
 `install-dotfiles.sh`.** Creating a directory here does nothing on its own.
