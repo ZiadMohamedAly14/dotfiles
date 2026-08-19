@@ -38,7 +38,7 @@ bold.family = "CaskaydiaMono Nerd Font"
 italic.family = "CaskaydiaMono Nerd Font"
 bold_italic.family = "CaskaydiaMono Nerd Font"
 
-size = 15.0
+size = 10
 
 # Omarchy's, unchanged. The CSI-u escapes are load-bearing: without them
 # Shift+Return is indistinguishable from Return in TUIs, and tmux cannot match
