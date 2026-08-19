@@ -28,47 +28,58 @@
 -- o.bind("SUPER + H", nil, "voxtype record toggle")
 -- o.bind("SUPER + PERIOD", nil, "omarchy-shell shell toggle omarchy.emojis")
 
--- hl.unbind("SUPER + T")
+-- default unbindings
 hl.unbind("SUPER + F")
 hl.unbind("SUPER + TAB")
 hl.unbind("SUPER + SHIFT + TAB")
-hl.unbind("SUPER + Right")
-hl.unbind("SUPER + Left")
-hl.unbind("SUPER + Up")
-hl.unbind("SUPER + Down")
+hl.unbind("SUPER + RIGHT")
+hl.unbind("SUPER + LEFT")
+hl.unbind("SUPER + UP")
+hl.unbind("SUPER + DOWN")
 hl.unbind("ALT + TAB")
 hl.unbind("SUPER + SHIFT + SPACE")
-
 hl.unbind("ALT + SHIFT + TAB")
--- hl.unbind("SUPER + 1")
--- hl.unbind("SUPER + SHIFT + 1")
+hl.unbind("SUPER + S")
+hl.unbind("PRINT")
+hl.unbind("SUPER + CTRL + L")
+hl.unbind("SUPER + CTRL + LEFT")  -- was: move grouped window focus left
+hl.unbind("SUPER + CTRL + RIGHT") -- was: move grouped window focus right
+-- hl.unbind("SUPER + ALT + MINUS")
+-- hl.unbind("SUPER + CTRL + MINUS")
+-- hl.unbind("SUPER + MINUS")
+-- hl.unbind("SUPER + SHIFT + ALT + EQUAL")
+-- hl.unbind("SUPER + SHIFT + CTRL + EQUAL")
+-- hl.unbind("SUPER + SHIFT + EQUAL")
 
--- hl.bind("SUPER + 1", hl.dsp.window.move({ workspace = "1" }))
 
+--Personal bindings
+o.bind("SUPER + S", "Screenshot", "omarchy-capture-screenshot")
+o.bind("SUPER + SHIFT + L", "Lock Screen", "omarchy-system-lock")
+
+--Window resizing
+hl.bind("SUPER + CTRL + LEFT",  hl.dsp.window.resize({ x = -30, y = 0, relative = true }), { repeating = true, description = "Resize window left" })
+hl.bind("SUPER + CTRL + RIGHT", hl.dsp.window.resize({ x = 30, y = 0, relative = true }),  { repeating = true, description = "Resize window right" })
+hl.bind("SUPER + CTRL + UP",    hl.dsp.window.resize({ x = 0, y = -30, relative = true }), { repeating = true, description = "Resize window up" })
+hl.bind("SUPER + CTRL + DOWN",  hl.dsp.window.resize({ x = 0, y = 30, relative = true }),  { repeating = true, description = "Resize window down" })
+--Workspace movement
 hl.bind("SUPER + RIGHT", hl.dsp.focus({ workspace = "+1" }), {description = "Next Workspace"})
 hl.bind("SUPER + LEFT", hl.dsp.focus({ workspace = "-1" }), {description = "Previous Workspace"})
 
+--Window focus
 hl.bind("ALT + RIGHT", hl.dsp.focus({ direction = "r" }), {description = "Focus Right Window"})
 hl.bind("ALT + LEFT", hl.dsp.focus({ direction = "l" }), {description = "Focus Left Window"})
 hl.bind("ALT + UP", hl.dsp.focus({ direction = "u" }), {description = "Focus Up Window"})
 hl.bind("ALT + DOWN", hl.dsp.focus({ direction = "d" }), {description = "Focus Down Window"})
 
-
--- Super + number moves the window (and follows it). Omarchy binds SUPER+N to
--- switch and SUPER+SHIFT+N to move, so both get unbound — otherwise
--- SUPER+SHIFT+N is left as a second, redundant move binding.
--- Workspace switching stays on SUPER+LEFT/RIGHT above.
--- SUPER+SHIFT+ALT+N ("move silently", no follow) is Omarchy's, left alone.
---
--- Bound by keycode, not keysym: with kb_layout = "us,ara" the Arabic layout
--- changes what the number row emits, so a keysym binding would break on
--- layout toggle. code:10..19 is the physical row and is layout-independent.
+--Window movement
 for workspace = 1, 10 do
   local key = "code:" .. tostring(workspace + 9)
 
+  -- Remove Omarchy's default: Super + number -> switch workspace
   hl.unbind("SUPER + " .. key)
   hl.unbind("SUPER + SHIFT + " .. key)
 
+  -- Replace it with: Super + number -> move window
   o.bind(
     "SUPER + " .. key,
     "Move window to workspace " .. workspace,
