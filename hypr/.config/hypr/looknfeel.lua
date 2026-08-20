@@ -4,8 +4,8 @@
     hl.config({
         general = {
             -- No gaps between windows or borders.
-            gaps_in = 2,
-            gaps_out = 1,
+            gaps_in = 0,
+            gaps_out = 2,
             border_size = 1,
             ['col.active_border'] = 0xffe2e2e3,
             -- Change to niri-like side-scrolling layout.
@@ -17,9 +17,9 @@
     hl.config({
         decoration = {
             -- Use round window corners.
-            rounding = 8,
+            rounding = 10,
 
-            active_opacity = 1,
+            active_opacity = 5,
             inactive_opacity = 1,
             fullscreen_opacity = 1,
 
