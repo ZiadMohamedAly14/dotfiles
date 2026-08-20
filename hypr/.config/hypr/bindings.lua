@@ -44,6 +44,8 @@ hl.unbind("PRINT")
 hl.unbind("SUPER + CTRL + L")
 hl.unbind("SUPER + CTRL + LEFT")  -- was: move grouped window focus left
 hl.unbind("SUPER + CTRL + RIGHT") -- was: move grouped window focus right
+hl.unbind("SUPER + SHIFT + T")    -- freeing it for the todoist plugin below
+hl.unbind("SUPER + P")            -- freeing it for the prayer-times plugin below
 -- hl.unbind("SUPER + ALT + MINUS")
 -- hl.unbind("SUPER + CTRL + MINUS")
 -- hl.unbind("SUPER + MINUS")
@@ -55,6 +57,18 @@ hl.unbind("SUPER + CTRL + RIGHT") -- was: move grouped window focus right
 --Personal bindings
 o.bind("SUPER + S", "Screenshot", "omarchy-capture-screenshot")
 o.bind("SUPER + SHIFT + L", "Lock Screen", "omarchy-system-lock")
+
+-- Plugins, installed by omarchy-supplement's install-plugins.sh.
+--
+-- VERIFY BOTH COMMANDS. Omarchy shell plugins are toggled by id, following the
+-- pattern in the emoji example above:
+--   omarchy-shell shell toggle omarchy.emojis
+-- Third-party plugins register their own ids, which I have not confirmed — the
+-- two below are the expected shape, not verified strings. Find the real ones:
+--   omarchy plugin list
+--   ls ~/.local/share/omarchy/plugins/ ~/.config/omarchy/plugins/ 2>/dev/null
+o.bind("SUPER + SHIFT + T", "Todoist", "omarchy-shell shell toggle omarchy.todoist")
+o.bind("SUPER + P", "Prayer times", "omarchy-shell shell toggle omarchy.quattro-prayer-times")
 
 --Window resizing
 hl.bind("SUPER + CTRL + LEFT",  hl.dsp.window.resize({ x = -30, y = 0, relative = true }), { repeating = true, description = "Resize window left" })
