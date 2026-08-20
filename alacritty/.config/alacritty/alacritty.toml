@@ -30,13 +30,11 @@ decorations = "None"
 
 [font]
 
-# Ships with Omarchy, and is what Omarchy's own config uses. CaskaydiaCove is
-# the ligature variant, but Alacritty doesn't render ligatures — identical
-# result, extra package.
-normal.family = "CaskaydiaMono Nerd Font"
-bold.family = "CaskaydiaMono Nerd Font"
-italic.family = "CaskaydiaMono Nerd Font"
-bold_italic.family = "CaskaydiaMono Nerd Font"
+# Omarchy's default font — already on the system, so nothing to install.
+normal.family = "JetBrainsMono Nerd Font"
+bold.family = "JetBrainsMono Nerd Font"
+italic.family = "JetBrainsMono Nerd Font"
+bold_italic.family = "JetBrainsMono Nerd Font"
 
 size = 10
 
