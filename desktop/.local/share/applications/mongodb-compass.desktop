@@ -1,0 +1,28 @@
+[Desktop Entry]
+# User override of /usr/share/applications/mongodb-compass.desktop.
+#
+# Identical to the packaged entry except for the two flags on Exec:
+#
+#   --password-store=gnome-libsecret
+#       Electron picks a credential backend by sniffing XDG_CURRENT_DESKTOP. It
+#       recognises GNOME, KDE and Xfce; Hyprland is none of those, so it gives
+#       up and reports "cannot access credentials, passwords will not be saved"
+#       even though gnome-keyring is running and answering on D-Bus. Naming the
+#       backend explicitly is the fix. Omarchy does the same for VS Code
+#       ("password-store":"gnome-libsecret" in omarchy-install-editor-vscode).
+#
+#   --ignore-additional-command-line-flags
+#       Compass validates argv against its own preference schema before Electron
+#       sees it, and rejects the unknown "passwordStore" option outright. This
+#       flag must come FIRST or the one after it never reaches Electron.
+#
+# The flags go before %U — anything after a field code is treated as a filename.
+Name=MongoDB Compass
+Comment=The MongoDB GUI
+GenericName=MongoDB Compass
+Exec=mongodb-compass --ignore-additional-command-line-flags --password-store=gnome-libsecret %U
+Icon=mongodb-compass
+Type=Application
+StartupNotify=true
+Categories=Office;Database;Building;Debugger;IDE;GUIDesigner;Profiling;
+MimeType=x-scheme-handler/mongodb;x-scheme-handler/mongodb+srv;

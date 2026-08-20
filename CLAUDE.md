@@ -37,6 +37,7 @@ No sync step; commit from `~/dotfiles`.
 | `hypr` | `~/.config/hypr/*.lua` | Five override files only — not the loader |
 | `alacritty` | `~/.config/alacritty/alacritty.toml` | Replaces Omarchy's file; keeps its theme import so `omarchy theme` still works |
 | `starship` | `~/.config/starship.toml` | Literal hex palette — deliberately not theme-aware |
+| `desktop` | `~/.local/share/applications/*.desktop` | User overrides shadowing `/usr/share/applications`. Home for Electron apps that need `--password-store=gnome-libsecret` — Chromium can't detect a keyring on Hyprland |
 
 **A package deploys only if its name is in the `PACKAGES` array in omarchy-supplement's
 `install-dotfiles.sh`.** Creating a directory here does nothing on its own.
