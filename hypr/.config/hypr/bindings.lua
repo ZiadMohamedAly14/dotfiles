@@ -55,6 +55,7 @@ hl.unbind("SUPER + CTRL + RIGHT") -- was: move grouped window focus right
 --Personal bindings
 o.bind("SUPER + S", "Screenshot", "omarchy-capture-screenshot")
 o.bind("SUPER + SHIFT + L", "Lock Screen", "omarchy-system-lock")
+o.bind("SUPER + SHIFT + V", "VS Code", "code")
 
 --Window resizing
 hl.bind("SUPER + CTRL + LEFT",  hl.dsp.window.resize({ x = -30, y = 0, relative = true }), { repeating = true, description = "Resize window left" })
