@@ -30,11 +30,17 @@ decorations = "None"
 
 [font]
 
-# Omarchy's default font — already on the system, so nothing to install.
-normal.family = "JetBrainsMono Nerd Font"
-bold.family = "JetBrainsMono Nerd Font"
-italic.family = "JetBrainsMono Nerd Font"
-bold_italic.family = "JetBrainsMono Nerd Font"
+# Package: ttf-cascadia-mono-nerd, installed by omarchy-supplement, which also
+# runs `omarchy-font-set` to make it the system monospace font.
+#
+# To change the font, edit these four lines (and the supplement). Do NOT use
+# `omarchy font set` / Setup > Font once this file is stowed: it rewrites the
+# family with a `sed -i` that does not follow symlinks, so the link is replaced
+# by a plain file and this repo silently stops tracking your terminal config.
+normal.family = "CaskaydiaMono Nerd Font"
+bold.family = "CaskaydiaMono Nerd Font"
+italic.family = "CaskaydiaMono Nerd Font"
+bold_italic.family = "CaskaydiaMono Nerd Font"
 
 size = 10
 
