@@ -6,7 +6,7 @@
             -- No gaps between windows or borders.
             gaps_in = 2,
             gaps_out = 1,
-            border_size = 1,
+            border_size = 2,
             ['col.active_border'] = 0xffe2e2e3,
             -- Change to niri-like side-scrolling layout.
             -- layout = "scrolling",
