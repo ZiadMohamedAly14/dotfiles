@@ -57,6 +57,9 @@ o.bind("SUPER + S", "Screenshot", "omarchy-capture-screenshot")
 o.bind("SUPER + SHIFT + L", "Lock Screen", "omarchy-system-lock")
 -- no need for vscode binding since super + shift + n is already bound to open your default editor (vscode in my case)
 -- o.bind("SUPER + SHIFT + V", "VS Code", "code")
+-- Omarchy's own binding is gated behind the preinstalls, which the bootstrap removes
+hl.unbind("SUPER + SHIFT + D")
+o.bind("SUPER + SHIFT + D", "Docker", { tui = "omarchy-launch-docker-tui" })
 
 --Window resizing
 hl.bind("SUPER + CTRL + LEFT",  hl.dsp.window.resize({ x = -30, y = 0, relative = true }), { repeating = true, description = "Resize window left" })
